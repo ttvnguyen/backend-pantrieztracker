@@ -16,9 +16,9 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('qty', models.SmallIntegerField()),
-                ('image', models.CharField(max_length=60)),
-                ('item', models.CharField(max_length=60)),
-                ('category', models.CharField(max_length=60)),
+                ('image', models.CharField(max_length=255)),
+                ('item', models.CharField(max_length=120)),
+                ('category', models.CharField(max_length=120)),
                 ('expiry', models.DateField()),
             ],
         ),
