@@ -18,13 +18,23 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 from inventory.views import InventoryViewSet
+from django.conf import settings
+from django.conf.urls.static import static
 
 # create a new router
 router = routers.DefaultRouter()
 # register our viewsets
 router.register(r'inventory', InventoryViewSet) #register "/inventory" routes
 
+#to connect with your views
 urlpatterns = [
     path('', include(router.urls)),
     path('admin/', admin.site.urls),
+    path('gallery/', include('gallery.urls'))
 ]
+
+#for gallery app
+#This is used for serving files uploaded by a user during development
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
